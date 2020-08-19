@@ -67,6 +67,7 @@ function generatePassword() {
                     (password.text.length))], (Math.floor(Math.random() * (1.1)) === 0 ? CUSTOM_TEXT[Math.floor(Math.random() *
                         (CUSTOM_TEXT.length))] : CUSTOM_TEXT[Math.floor(Math.random() * (CUSTOM_TEXT.length))].toUpperCase()))
             }
+            password.text =  password.text.replace(/ /g, "_")
         }
         PASSWORDS.push(password.text)
         PASSWORDS.forEach(function (element, index) {
