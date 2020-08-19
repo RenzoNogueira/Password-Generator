@@ -12,6 +12,11 @@ window.onload = _ => {
     NUMBER_OF_PASSWORDS.addEventListener("input", _ => {
         document.querySelector("#numberOfPasswordsGenerated").innerText = NUMBER_OF_PASSWORDS.value
     })
+
+    document.querySelector("#test-password").addEventListener("click", _ => {
+        senha = prompt("Enter the password you want to test")
+        senha != null ? window.location.href = `test-password.html?senha=${senha}` : false
+    })
 }
 
 var CUSTOM_TEXT = ""
@@ -26,7 +31,7 @@ function generatePassword() {
     // let CUSTOM_TEXT
     if (document.getElementsByName("custom-password")[0].checked) {
         IS_CUSTOM = true
-        if(CUSTOM_TEXT === null) CUSTOM_TEXT = ""
+        if (CUSTOM_TEXT === null) CUSTOM_TEXT = ""
         CUSTOM_TEXT = prompt("Enter a keyword", CUSTOM_TEXT)
     }
 
@@ -67,7 +72,7 @@ function generatePassword() {
                     (password.text.length))], (Math.floor(Math.random() * (1.1)) === 0 ? CUSTOM_TEXT[Math.floor(Math.random() *
                         (CUSTOM_TEXT.length))] : CUSTOM_TEXT[Math.floor(Math.random() * (CUSTOM_TEXT.length))].toUpperCase()))
             }
-            password.text =  password.text.replace(/ /g, "_")
+            password.text = password.text.replace(/ /g, "_")
         }
         PASSWORDS.push(password.text)
         PASSWORDS.forEach(function (element, index) {
@@ -81,10 +86,4 @@ function generatePassword() {
             TABLE_PASWORDS.appendChild(tr)
         })
     }
-
-    // for(){
-    //     const ELEMENT_TH = document.createElement("tr")
-    //     const ELEMENT_TH = document.createElement("th")
-    //     const ELEMENT_TH = document.createElement("td")
-    // }
 }

@@ -4,16 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
+    <title>Home - Password Generator</title>
     <link rel="shortcut icon" href="trava.png" />
-    <link rel="stylesheet" href="css/style.css/">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="frameworks/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Password Generator</span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 9999;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Password Generator</a>
+            <div class="collapse bg-light navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a id="test-password" class="btn btn-outline-info nav-link text-dark">Test Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="password-and-tips.html" id="test-password" class="btn btn-outline-info nav-link text-dark">Password and tips</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -80,7 +94,7 @@
         </div>
     </main>
 
-    <footer class="bg-light p-4 row">
+    <footer class="bg-light p-4 mt-4 row">
         <div class="col-sm">
             <h6>@2020 Renzo Nogueira</h6>
         </div>
@@ -91,7 +105,8 @@
         </div>
         <div class="col-sm"></div>
         <div class="col-sm">
-            <a href="https://renzonogueira.github.io/" target="_blank" rel="noopener noreferrer">renzonogueira.github.io</a>
+            <a href="https://renzonogueira.github.io/" target="_blank"
+                rel="noopener noreferrer">renzonogueira.github.io</a>
         </div>
     </footer>
 
