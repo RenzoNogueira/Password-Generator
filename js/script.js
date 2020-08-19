@@ -78,12 +78,49 @@ function generatePassword() {
         PASSWORDS.forEach(function (element, index) {
             tr = document.createElement("tr")
             th = document.createElement("th")
-            td = document.createElement("td")
+            td1 = document.createElement("td")
+            td2 = document.createElement("td")
             th.innerText = index + 1
-            td.innerText = element
+            td1.innerText = element
+            td2.innerText = checkPasswordStrength(element)
             tr.appendChild(th)
-            tr.appendChild(td)
+            tr.appendChild(td1)
+            tr.appendChild(td2)
             TABLE_PASWORDS.appendChild(tr)
         })
     }
+}
+
+function checkPasswordStrength(senha) {
+    let forca = 0;
+    let mostra_res
+    if ((senha.length >= 4) && (senha.length <= 7)) {
+        forca += 10;
+    } else if (senha.length > 7) {
+        forca += 25;
+    }
+    if (senha.match(/[a-z]+/)) {
+        forca += 10;
+    }
+    if (senha.match(/[A-Z]+/)) {
+        forca += 20;
+    }
+    if (senha.match(/d+/)) {
+        forca += 20;
+    }
+    if (senha.match(/W+/)) {
+        forca += 25;
+    }
+
+    if (forca < 30) {
+        mostra_res = "Fraca"
+    } else if ((forca >= 30) && (forca < 60)) {
+        mostra_res = "Boa"
+    } else if ((forca >= 60) && (forca < 85)) {
+        mostra_res = "Forte"
+    } else {
+        mostra_res = "Excelente"
+    }
+
+    return mostra_res;
 }
