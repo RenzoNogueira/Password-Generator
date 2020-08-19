@@ -113,13 +113,13 @@ function checkPasswordStrength(senha) {
     }
 
     if (forca < 30) {
-        mostra_res = "Fraca"
+        mostra_res = "Weak"
     } else if ((forca >= 30) && (forca < 60)) {
-        mostra_res = "Boa"
+        mostra_res = "Good"
     } else if ((forca >= 60) && (forca < 85)) {
-        mostra_res = "Forte"
+        mostra_res = "Strong"
     } else {
-        mostra_res = "Excelente"
+        mostra_res = "Great"
     }
 
     return mostra_res;
