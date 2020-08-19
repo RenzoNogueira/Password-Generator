@@ -14,12 +14,22 @@ window.onload = _ => {
     })
 }
 
+var CUSTOM_TEXT = ""
+
 function generatePassword() {
     const PASSWORDS = []
-    const TABLEPASWORDS = document.querySelector("tbody")
+    const TABLE_PASWORDS = document.querySelector("tbody")
     const PASSWORD_LENGT = document.querySelector("#password-length").value
     const NUMBER_OF_PASSWORDS = document.querySelector("#password-quantities").value
     const PASSWORD_TYPE = document.querySelector("#password-type").value
+    let IS_CUSTOM = false
+    // let CUSTOM_TEXT
+    if (document.getElementsByName("custom-password")[0].checked) {
+        IS_CUSTOM = true
+        if(CUSTOM_TEXT === null) CUSTOM_TEXT = ""
+        CUSTOM_TEXT = prompt("Enter a keyword", CUSTOM_TEXT)
+    }
+
 
     console.log({
         PASSWORD_LENGT: PASSWORD_LENGT,
@@ -28,7 +38,7 @@ function generatePassword() {
     })
 
     for (let number_of_passwords = 1; number_of_passwords <= NUMBER_OF_PASSWORDS; number_of_passwords++) {
-        TABLEPASWORDS.innerHTML = ""
+        TABLE_PASWORDS.innerHTML = ""
         const password = new Password()
         for (let characters = 0; characters < PASSWORD_LENGT; characters++) {
             let POSITION = 0
@@ -42,9 +52,20 @@ function generatePassword() {
                     password.text += password.charactersEasy[POSITION]
                     break
                 case "3":
+                    POSITION = Math.floor(Math.random() * (password.TaractersMedium.length));
+                    password.text += password.TaractersMedium[POSITION]
+                    break
+                case "4":
                     POSITION = Math.floor(Math.random() * (password.charactersHard.length));
                     password.text += password.charactersHard[POSITION]
                     break
+            }
+        }
+        if (IS_CUSTOM && PASSWORD_TYPE != 1) {
+            for (let i = 0; i < CUSTOM_TEXT.length; i++) {
+                password.text = password.text.replace(password.text[Math.floor(Math.random() *
+                    (password.text.length))], (Math.floor(Math.random() * (1.1)) === 0 ? CUSTOM_TEXT[Math.floor(Math.random() *
+                        (CUSTOM_TEXT.length))] : CUSTOM_TEXT[Math.floor(Math.random() * (CUSTOM_TEXT.length))].toUpperCase()))
             }
         }
         PASSWORDS.push(password.text)
@@ -56,7 +77,7 @@ function generatePassword() {
             td.innerText = element
             tr.appendChild(th)
             tr.appendChild(td)
-            TABLEPASWORDS.appendChild(tr)
+            TABLE_PASWORDS.appendChild(tr)
         })
     }
 
