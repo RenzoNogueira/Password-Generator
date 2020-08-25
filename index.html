@@ -21,11 +21,17 @@
             <div class="collapse bg-light navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a id="test-password" class="btn btn-outline-info nav-link text-dark">Test Password</a>
+                        <a id="test-password" class="btn btn-outline-info nav-link text-dark ml-2">Login simulation</a>
                     </li>
                     <li class="nav-item">
                         <a href="password-and-tips.html" id="test-password"
-                            class="btn btn-outline-info nav-link text-dark">Password and tips</a>
+                            class="btn btn-outline-info nav-link text-dark ml-2">Password and tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="button-quarterly-password-list" href="password-and-tips.html" id="test-password"
+                            class="btn btn-outline-info nav-link text-dark ml-2" data-toggle="modal"
+                            data-target="#modal-quarterly-password-list">Generate quarterly password
+                            list</a>
                     </li>
                 </ul>
             </div>
@@ -97,6 +103,61 @@
             </h6>
         </div>
     </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-quarterly-password-list" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Quarterly password list</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="quarterly-password-list">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>First trimester</span>
+                            <ul>
+                                <li>
+                                    <small id="first-quarter-password">...</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Second trimester</span>
+                            <ul>
+                                <li>
+                                    <small id="second-quarter-password">...</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Third trimester</span>
+                            <ul>
+                                <li>
+                                    <small id="third-quarter-password">...</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Fourth trimester</span>
+                            <ul>
+                                <li>
+                                    <small id="fourth-quarter-password">...</small>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Copy list</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-light p-4 mt-4 row">
         <div class="col-sm">

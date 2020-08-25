@@ -17,6 +17,15 @@ window.onload = _ => {
         senha = prompt("Enter the password you want to test")
         senha != null ? window.location.href = `test-password.html?senha=${senha}` : false
     })
+
+    document.querySelector("#button-quarterly-password-list").addEventListener("click", _ => {
+        document.querySelector("#password-length").value = 12
+        document.getElementsByName("custom-password")[1].checked = true
+        document.getElementsByName("custom-password")[0].checked = false
+        document.querySelector("#password-quantities").value = 100
+        document.querySelector("#password-type").value = 2
+        generateQuarterlyPasswordList()
+    })
 }
 
 var CUSTOM_TEXT = ""
@@ -36,11 +45,11 @@ function generatePassword() {
     }
 
 
-    console.log({
-        PASSWORD_LENGT: PASSWORD_LENGT,
-        NUMBER_OF_PASSWORDS: NUMBER_OF_PASSWORDS,
-        PASSWORD_TYPE: PASSWORD_TYPE
-    })
+    // console.log({
+    //     PASSWORD_LENGT: PASSWORD_LENGT,
+    //     NUMBER_OF_PASSWORDS: NUMBER_OF_PASSWORDS,
+    //     PASSWORD_TYPE: PASSWORD_TYPE
+    // })
 
     for (let number_of_passwords = 1; number_of_passwords <= NUMBER_OF_PASSWORDS; number_of_passwords++) {
         TABLE_PASWORDS.innerHTML = ""
@@ -89,44 +98,14 @@ function generatePassword() {
             TABLE_PASWORDS.appendChild(tr)
         })
     }
+
+    return PASSWORDS;
 }
 
 function checkPasswordStrength(senha) {
-    // let forca = 0;
-    // let mostra_res
-    // if ((senha.length >= 4) && (senha.length <= 7)) {
-    //     forca += 10;
-    // } else if (senha.length > 7) {
-    //     forca += 25;
-    // }
-    // if (senha.match(/[a-z]+/)) {
-    //     forca += 10;
-    // }
-    // if (senha.match(/[A-Z]+/)) {
-    //     forca += 20;
-    // }
-    // if (senha.match(/d+/)) {
-    //     forca += 20;
-    // }
-    // if (senha.match(/W+/)) {
-    //     forca += 25;
-    // }
-
-    // if (forca < 30) {
-    //     mostra_res = "Weak"
-    // } else if ((forca >= 30) && (forca < 60)) {
-    //     mostra_res = "Good"
-    // } else if ((forca >= 60) && (forca < 85)) {
-    //     mostra_res = "Strong"
-    // } else {
-    //     mostra_res = "Great"
-    // }
-
-    // return mostra_res;
 
     var strPassword = senha;
     var charPassword = 0;
-    var complexity = null;
     var minPasswordLength = 8;
     var baseScore = 0,
         score = 0;
@@ -215,4 +194,25 @@ function checkPasswordStrength(senha) {
     //     "<br />Lower case only penalty :<span class=\"value\"> " + bonus.FlatLower + "</span>" +
     //     "<br />Numbers only penalty :<span class=\"value\"> " + bonus.FlatNumber + "</span>" +
     //     "<br />Total Score:<span class=\"value\"> " + score + "</span>");
+}
+
+function generateQuarterlyPasswordList() {
+    let achouSenhaForte = true
+
+    const Passwords = []
+    while (achouSenhaForte) {
+        for (let i of generatePassword()) {
+            let status = checkPasswordStrength(i)
+            if (status === "Strong" || status === "Safe") {
+                Passwords.push(i)
+                break
+            }
+        }
+        if (Passwords.length >= 4) achouSenhaForte = false
+    }
+    document.querySelector("#first-quarter-password").innerText = Passwords[0]
+    document.querySelector("#second-quarter-password").innerText = Passwords[1]
+    document.querySelector("#third-quarter-password").innerText = Passwords[2]
+    document.querySelector("#fourth-quarter-password").innerText = Passwords[3]
+    return Passwords
 }

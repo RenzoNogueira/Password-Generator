@@ -28,3 +28,7 @@
 body {
     overflow-x: hidden;
 }
+
+.modal {
+    z-index: 9999 !important;
+}
